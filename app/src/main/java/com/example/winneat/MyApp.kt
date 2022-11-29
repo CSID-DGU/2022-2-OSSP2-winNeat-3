@@ -5,7 +5,8 @@ class MyApp {
         // * 서버에 있는 php 파일 위치
         //  ! 서버 IP 제외
         // ex) /파일명.php
-        const val TAG: String = "로그"
-        const val Example_url: String = "http://winandeat.dothome.co.kr/user_login.php"
+        const val SignIn_url: String = "http://winandeat.dothome.co.kr/user_login.php"
+        const val Register_url: String = "http://winandeat.dothome.co.kr/user_register.php"
+        const val Validate_url: String = "http://winandeat.dothome.co.kr/user_validate.php"
     }
 }

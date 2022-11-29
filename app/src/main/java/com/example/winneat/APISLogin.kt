@@ -10,34 +10,34 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
-interface APIS {
+interface APISLogin {
     //post -> php 파일 주소
     @FormUrlEncoded
-    @POST(MyApp.Example_url)
+    @POST(MyApp.SignIn_url)
     @Headers(
         "accept: application/json",
         "content-type: application/x-www-form-urlencoded; charset=utf-8"
     )
 
-    //post로 서버에 데이터를 보내는 메서드
-    fun post_users(
-        // 서버에 Post방식으로 보낼 떄 사용하는  파라미터의 키 값
+    // Post로 서버에 데이터를 보내는 메서드 - 로그인
+    fun postUsers(
+        // 서버에 Post 방식으로 보낼 떄 사용하는  파라미터의 키 값
         //ex)@Field('키') =>  $_POST['키']
         @Field("userId") userId: String,
         @Field("userPassword") userPassword: String
-    ): Call<PostModel>
-
+    ): Call<PostLogin>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         //서버 IP만 입력해주세요~
         private const val BASE_URL = "http://winandeat.dothome.co.kr/"
-        fun create(): APIS {
+        fun create(): APISLogin {
             val gson: Gson = GsonBuilder().setLenient().create();
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
-                .create(APIS::class.java)
+                .create(APISLogin::class.java)
         }
     }
 }
+
