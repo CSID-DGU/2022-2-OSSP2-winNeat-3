@@ -16,6 +16,7 @@ class RegisterActivity : AppCompatActivity() {
         val api_1 by lazy { APISRegister.create() }
         val api_2 by lazy { APISValidate.create() }
         // setContentView(R.layout.activity_register)
+        val thisActivity = this
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -73,6 +74,9 @@ class RegisterActivity : AppCompatActivity() {
                         val body = response.body()
                         val status = response.body()?.status
                         Log.d("log", "성공 : $status")
+
+                        val intent = Intent(thisActivity,LoginActivity::class.java)
+                        startActivity(intent) // 로그인 액티비티로 이동
                     }
 
                     override fun onFailure(call: Call<PostRegister>, t: Throwable) {
