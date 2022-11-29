@@ -1,5 +1,6 @@
 package com.example.winneat
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
-    private  lateinit var binding : ActivityRegisterBinding
+    private lateinit var binding : ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val api_1 by lazy { APISRegister.create() }
@@ -30,6 +31,11 @@ class RegisterActivity : AppCompatActivity() {
                     val body = response.body()
                     val status = response.body()?.status
                     Log.d("log", "$userId 아이디 생성 가능 여부 : $status")
+                    if(status.equals("true")){
+                        ToastObj.createToast(applicationContext, "아이디 생성 가능")?.show() // 토스트 메시지 띄움
+                    }else{
+                        ToastObj.createToast(applicationContext, "아이디가 이미 존재합니다.")?.show() // 토스트 메시지 띄움
+                    }
                 }
                 override fun onFailure(call: Call<PostRegister>, t: Throwable) {
                     Log.d("log","${t.localizedMessage}")
@@ -56,6 +62,7 @@ class RegisterActivity : AppCompatActivity() {
                 ToastObj.createToast(context, "비밀번호가 일치하지 않습니다.")?.show() // 토스트 메시지 띄움
                 binding.enterPw.setText(null)
                 binding.reenterPw.setText(null)
+
             }else{ // 정보 모두 입력하고, 비밀번호가 일치 했을 때
                 api_1.postUsersInfo(userId,userPassword,userName).enqueue(object : Callback<PostRegister> {
                     override fun onResponse(call: Call<PostRegister>, response: Response<PostRegister>) {
@@ -67,6 +74,7 @@ class RegisterActivity : AppCompatActivity() {
                         val status = response.body()?.status
                         Log.d("log", "성공 : $status")
                     }
+
                     override fun onFailure(call: Call<PostRegister>, t: Throwable) {
                         Log.d("log","${t.localizedMessage}")
                         ToastObj.createToast(applicationContext, "회원가입 오류")?.show() // 토스트 메시지 띄움
@@ -74,5 +82,6 @@ class RegisterActivity : AppCompatActivity() {
                 })
             }
         }
+
     }
 }
