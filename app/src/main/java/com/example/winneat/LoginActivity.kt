@@ -17,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     //    setContentView(R.layout.activity_login)
 
+        val thisActivity = this
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -31,6 +32,8 @@ class LoginActivity : AppCompatActivity() {
 //                    Log.d("log", response.body().toString())
                       Log.d("log", "성공 : ${response.body()}") // php가 보내온 아이디, 비밀번호가 로그캣에 띄워짐
                     val body = response.body()
+                    val intent = Intent(thisActivity,MainActivity::class.java)
+                    startActivity(intent) // 회원가입 액티비티로 이동
                 }
                 override fun onFailure(call: Call<PostLogin>, t: Throwable) {
                     Log.d("log","${t.localizedMessage}")
