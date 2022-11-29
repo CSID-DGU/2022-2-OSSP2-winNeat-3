@@ -3,9 +3,7 @@ package com.example.winneat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.winneat.databinding.ActivityLoginBinding
 import com.example.winneat.databinding.ActivityMainBinding
-import com.example.winneat.databinding.ActivityRegisterBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
