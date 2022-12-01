@@ -23,7 +23,8 @@ interface APISRegister{
     fun postUsersInfo(
         @Field("userId") userId: String,
         @Field("userPassword") userPassword: String,
-        @Field("userName") userName: String
+        @Field("userName") userName: String,
+        @Field("phoneNum") phoneNum: String
     ): Call<PostRegister>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
