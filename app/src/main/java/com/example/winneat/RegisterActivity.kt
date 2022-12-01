@@ -51,8 +51,9 @@ class RegisterActivity : AppCompatActivity() {
             var userPassword = binding.enterPw.text.toString()
             var re_userPassword = binding.reenterPw.text.toString()
             var userName = binding.enterName.text.toString()
+            var phoneNum = binding.editTextPhone.text.toString()
 
-            if (userId.equals("") || userPassword.equals("") || re_userPassword.equals("") || userName.equals("")){
+            if (userId.equals("") || userPassword.equals("") || re_userPassword.equals("") || userName.equals("")||phoneNum.equals("")){
                 // 하나라도 적지 않은 정보가 있다면
                 val context = this
                 ToastObj.createToast(context, "정보를 모두 입력하세요.")?.show() // 토스트 메시지 띄움
@@ -65,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                 binding.reenterPw.setText(null)
 
             }else{ // 정보 모두 입력하고, 비밀번호가 일치 했을 때
-                api_1.postUsersInfo(userId,userPassword,userName).enqueue(object : Callback<PostRegister> {
+                api_1.postUsersInfo(userId,userPassword,userName,phoneNum).enqueue(object : Callback<PostRegister> {
                     override fun onResponse(call: Call<PostRegister>, response: Response<PostRegister>) {
                         // PostLogin 클래스 형식으로 php에 데이터 Post, php가 응답한 데이터 또한 PostLogin 클래스 형식으로 받아옴
 //                    Log.d("log",response.toString())
