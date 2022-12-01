@@ -16,4 +16,7 @@ data class PostRegister(
     @Expose
     @SerializedName("status")
     var status: String? =null,
+    @Expose
+    @SerializedName("phoneNum")
+    var phoneNum: String? =null
 )
