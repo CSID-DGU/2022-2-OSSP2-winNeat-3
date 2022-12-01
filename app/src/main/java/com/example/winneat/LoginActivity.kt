@@ -36,6 +36,9 @@ class LoginActivity : AppCompatActivity() {
                     val userId = response.body()?.userId
                     val userPassword = response.body()?.userPassword
 
+                    binding.editId.setText(null)
+                    binding.editPw.setText(null)
+
                     val intent = Intent(thisActivity,MainActivity::class.java)
                     intent.putExtra("userId",userId)
                     intent.putExtra("userPassword",userPassword)
