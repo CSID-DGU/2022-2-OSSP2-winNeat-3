@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/home_pannel_background_iv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cheerup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_pannel_btn_nugu_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toStartOf="@id/home_pannel_btn_ticket_iv"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/home_pannel_title_tv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_pannel_btn_ticket_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toStartOf="@id/home_pannel_btn_setting_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/home_pannel_btn_setting_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/home_pannel_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="응원할때 필수 메뉴!"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:letterSpacing="-0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/home_today_music_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:text="이 메뉴 먹으면 우리팀 이겨먹어!"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_iv" />
+
+
+
+        <TextView
+            android:id="@+id/home_today_music_total_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="치킨"
+            android:textColor="#3F3FFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/home_today_music_domestic_tv"
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_iv" />
+
+        <TextView
+            android:id="@+id/home_today_music_domestic_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="피자"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/home_today_music_oversea_tv"
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_iv" />
+
+        <TextView
+            android:id="@+id/home_today_music_oversea_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="맥주"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_iv" />
+
+        <HorizontalScrollView
+            android:id="@+id/home_today_music_oversea_hs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_today_music_oversea_tv">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/home_album_img_iv1"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_launcher_foreground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/chiken"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이겨치킨"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_launcher_foreground"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="먹기피자"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_launcher_foreground"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="맥주"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이 메뉴는 어때요?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/store1"
+            app:layout_constraintTop_toBottomOf="@+id/home_today_music_oversea_hs"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/store1"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="60dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_today_music_oversea_hs"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+        <TextView
+            android:id="@+id/store1_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="맛집1"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/store1"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/store2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/store1_name"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+        <TextView
+            android:id="@+id/store2_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="맛집2"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/store2"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/store3"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/store2_name"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+        <TextView
+            android:id="@+id/store3_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="맛집3"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/store3"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/store4"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/store3_name"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+        <TextView
+            android:id="@+id/store4_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="맛집4"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/store4"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/store5"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/store4_name"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+        <TextView
+            android:id="@+id/store5_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="맛집5"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/store5"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/store6"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/store5_name"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+        <TextView
+            android:id="@+id/store6_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="맛집6"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/store6"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/store7"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            tools:ignore="MissingConstraints,NotSibling"
+            app:layout_constraintTop_toBottomOf="@id/store6_name" />
+
+        <TextView
+            android:id="@+id/store7_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="맛집7"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/store7"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/store8"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/store7_name"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+        <TextView
+            android:id="@+id/store8_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="맛집8"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/store8"
+            tools:ignore="MissingConstraints" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>
