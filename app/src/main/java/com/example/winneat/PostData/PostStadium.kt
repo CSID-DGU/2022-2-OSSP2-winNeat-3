@@ -3,7 +3,7 @@ package com.example.winneat.PostData
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class stadiumResult(
+data class stadiumResult (
     @Expose
     @SerializedName("stadium")
     var stadiumList:List<PostStadium> = arrayListOf()
