@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                     binding.editId.setText(null)
                     binding.editPw.setText(null)
 
-                    val intent = Intent(thisActivity,MainActivity::class.java)
+                    val intent = Intent(thisActivity,StadiumActivity::class.java)
                     intent.putExtra("userId",userId)
                     intent.putExtra("userPassword",userPassword)
 
