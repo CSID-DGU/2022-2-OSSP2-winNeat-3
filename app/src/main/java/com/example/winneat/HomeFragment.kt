@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,10 +28,14 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val qlist = arguments?.getSerializable("storeList")
-         storelist = qlist as? ArrayList<PostStore>
+        val userId = arguments?.getString("userId")
+        val userPassword = arguments?.getString("userPassword")
+        storelist = qlist as? ArrayList<PostStore>
 
         Log.d("fragment 들어옴", qlist.toString())
         Log.d("fragment 들어옴", storelist.toString())
+        Log.d("userId 들어옴", userId.toString())
+        Log.d("userPassword 들어옴", userPassword.toString())
 
 
         recyclerView = binding.rvResult
@@ -61,6 +66,7 @@ class HomeFragment : Fragment() {
         ) {
             holder.apply {
                 nameTextView.text = storelist?.get(position)?.storeName
+
                 if(storelist?.get(position)?.storeCategory.equals("떡볶이")){
                     Glide.with(itemView).load("https://cdn.pixabay.com/photo/2016/08/20/13/06/toppokki-1607479_960_720.jpg").override(400,200).centerCrop().into(storePic)
                 }else if (storelist?.get(position)?.storeCategory.equals("호프")){
@@ -71,6 +77,10 @@ class HomeFragment : Fragment() {
                     Glide.with(itemView).load("https://cdn.pixabay.com/photo/2014/10/19/20/59/hamburger-494706_960_720.jpg").override(400,200).centerCrop().into(storePic)
                 }
 
+                storeLayout.setOnClickListener {
+                    Log.d("뭐 선택했는지",storelist?.get(position)?.storeName.toString())
+                }
+
             }
         }
 
@@ -78,7 +88,7 @@ class HomeFragment : Fragment() {
             //위의 onCreateViewHolder에서 생성된 view를 가지고 실행함
             val nameTextView: TextView = view.findViewById(R.id.store_name)
             val storePic : ImageView = view.findViewById(R.id.storePic)
-
+            val storeLayout : LinearLayout = view.findViewById(R.id.storeLayout)
         }
     }
 }
