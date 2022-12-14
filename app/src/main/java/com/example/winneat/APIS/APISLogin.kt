@@ -1,7 +1,7 @@
 package com.example.winneat.APIS
 
 import com.example.winneat.MyApp
-import com.example.winneat.PostLogin
+import com.example.winneat.PostData.PostLogin
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import retrofit2.Call
