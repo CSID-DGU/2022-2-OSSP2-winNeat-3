@@ -26,6 +26,8 @@ class StadiumActivity : AppCompatActivity() {
 
         binding.stadiumBtn.setOnClickListener{ //스타디움 텍스트 눌렀을 때
             val intent = Intent(this, StadiumSelectActivity::class.java)
+            intent.putExtra("userId",userId)
+            intent.putExtra("userPassword",userPassword)
             startActivity(intent) // 경기장 선택 화면 이동
         }
 
