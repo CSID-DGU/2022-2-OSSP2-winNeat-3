@@ -9,5 +9,6 @@ class MyApp {
         const val Register_url: String = "http://winandeat.dothome.co.kr/user_register.php"
         const val Validate_url: String = "http://winandeat.dothome.co.kr/user_validate.php"
         const val Store_url: String = "http://winandeat.dothome.co.kr/store.php"
+        const val Stadium_url : String = "http://winandeat.dothome.co.kr/stadiums.php"
     }
 }
