@@ -12,6 +12,8 @@ class StadiumActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_stadium)
+        binding = ActivityStadiumBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.stadiumBtn.setOnClickListener{ //스타디움 텍스트 눌렀을 때
             val intent = Intent(this, StadiumSelectActivity::class.java)
