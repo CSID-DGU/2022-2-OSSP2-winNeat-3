@@ -2,6 +2,7 @@ package com.example.winneat.PostData
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class storeResult(
     @Expose
@@ -25,4 +26,4 @@ data class PostStore(
     @Expose
     @SerializedName("storeCategory")
     var storeCategory: String?,
-)
+) : Serializable
