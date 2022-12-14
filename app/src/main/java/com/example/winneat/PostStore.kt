@@ -22,4 +22,7 @@ data class PostStore(
     @Expose
     @SerializedName("stadiumName")
     var stadiumName: String?,
+    @Expose
+    @SerializedName("storeCategory")
+    var storeCategory: String?,
 )
