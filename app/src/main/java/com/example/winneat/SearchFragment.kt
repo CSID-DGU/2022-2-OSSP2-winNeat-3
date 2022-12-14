@@ -1,5 +1,6 @@
 package com.example.winneat
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,8 +20,11 @@ import com.example.winneat.databinding.FragmentSearchBinding
 class SearchFragment : Fragment() {
     lateinit var binding: FragmentSearchBinding
     lateinit var recyclerView: RecyclerView
-    var storelist: ArrayList<PostStore>? = null
+    lateinit var storelist : List<PostStore>
     lateinit var stadiumName:String
+    var userId=""
+    var userPassword=""
+    var storeName=""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,19 +34,18 @@ class SearchFragment : Fragment() {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         val qlist = arguments?.getSerializable("storeList")
-        val userId = arguments?.getString("userId")
-        val userPassword = arguments?.getString("userPassword")
+        userId = arguments?.getString("userId").toString()
+        userPassword = arguments?.getString("userPassword").toString()
         stadiumName = arguments?.getString("stadiumName").toString()
-        storelist = qlist as? ArrayList<PostStore>
+        storelist = qlist as List<PostStore>
 
         Log.d("fragment 들어옴", qlist.toString())
         Log.d("fragment 들어옴", storelist.toString())
-        Log.d("userId 들어옴", userId.toString())
-        Log.d("userPassword 들어옴", userPassword.toString())
-        Log.d("stadiumName 들어옴",stadiumName.toString())
+        Log.d("userId 들어옴", userId)
+        Log.d("userPassword 들어옴", userPassword)
+        Log.d("stadiumName 들어옴",stadiumName)
 
         binding.stadiumName.setText(stadiumName)
-
 
         recyclerView = binding.searchRecycle
         recyclerView.adapter = ResultRecyclerViewAdpater()
@@ -83,10 +86,17 @@ class SearchFragment : Fragment() {
                 }
 
                 storeLayout.setOnClickListener {
-                    Log.d("뭐 선택했는지",storelist?.get(position)?.storeName.toString())
-
+                    //Log.d("뭐 선택했는지",storelist?.get(position)?.storeName.toString())
+                    storeName=storelist?.get(position)?.storeName.toString()
+                    val intent = Intent(activity,StoreActivity::class.java)
+                    intent.apply {
+                        this.putExtra("userId",userId) // 데이터 넣기
+                        this.putExtra("userPassword",userPassword) // 데이터 넣기
+                        this.putExtra("storeName",storeName)
+                        this.putExtra("stadiumName", stadiumName)
+                    }
+                    startActivity(intent)
                 }
-
             }
         }
 
