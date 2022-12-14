@@ -14,6 +14,9 @@
         android:theme="@style/Theme.WinNeat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".StadiumSelectActivity"
+            android:exported="true" />
+        <activity
             android:name=".StadiumActivity"
             android:exported="true" />
         <activity
