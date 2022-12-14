@@ -21,14 +21,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var userId = ""
+        var userPassword = ""
+
         if(intent.hasExtra("userId")&&intent.hasExtra("userPassword")){
-            val userId = intent.getStringExtra("userId")
-            val userPassword = intent.getStringExtra("userPassword")
+            userId = intent.getStringExtra("userId").toString()
+            userPassword = intent.getStringExtra("userPassword").toString()
             Log.d("log", "메인에서 받아온 id : $userId, pw : $userPassword")
         }
 
         val postStadium="광주기아챔피언스필드"
         val argBundle = Bundle()
+        val searchBundle = Bundle()
         var argList = arrayListOf<PostStore>()
         //var argList = mutableListOf<PostStore>()
         api.postStadium(postStadium).enqueue(object : Callback<storeResult> {
@@ -48,7 +52,9 @@ class MainActivity : AppCompatActivity() {
 
                 val bundle = Bundle()
                 bundle.putSerializable("storeList",(list as Serializable))
-                argBundle.putSerializable("storeList",(list as Serializable))
+                bundle.putString("userId",userId)
+                bundle.putString("userPassword",userPassword)
+
 
                 val homeFragment = HomeFragment()
                 homeFragment.arguments = bundle
@@ -58,16 +64,6 @@ class MainActivity : AppCompatActivity() {
                 transaction.replace(R.id.main_frm,homeFragment).commit()
 
                 Log.d("bundle 확인", bundle.toString())
-
-
-                //val storeName= response.body()?.storeList?.get(1)?.storeName
-//                for(i in 0 until len!!){
-//                    Log.d("log", "${i}번째 stadiumName : ${response.body()!!.storeList[i].stadiumName}")
-//                    Log.d("log", "${i}번째 storeLoc : ${response.body()!!.storeList[i].storeLoc}")
-//                    Log.d("log", "${i}번째 storeName : ${response.body()!!.storeList[i].storeName}")
-//                    Log.d("log", "${i}번째 phoneNum : ${response.body()!!.storeList[i].phoneNum}")
-//                }
-
             }
             override fun onFailure(call: Call<storeResult>, t: Throwable) {
                 Log.d("log","${t.localizedMessage}")
@@ -81,8 +77,9 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.homeFragment -> {
                     argBundle.putSerializable("storeList",(argList))
-                    argBundle.putSerializable("storeSize",argList.size)
-                  //  argBundle.putString(argList.toString())
+                    //argBundle.putSerializable("storeSize",argList.size)
+                    argBundle.putString("userId",userId)
+                    argBundle.putString("userPassword",userPassword)
 
                     val homeFragment = HomeFragment()
                     homeFragment.arguments = argBundle
@@ -97,31 +94,23 @@ class MainActivity : AppCompatActivity() {
 
                     return@setOnItemSelectedListener true
                 }
-
-        }
-            false
-        }
-    }
-
-    private fun initBottomNavigation() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, HomeFragment())
-            .commitAllowingStateLoss()
-
-        binding.mainBnv.setOnItemSelectedListener{ item ->
-            when (item.itemId) {
-
-//                R.id.homeFragment -> {
-//                    supportFragmentManager.beginTransaction()
-//                        .replace(R.id.main_frm, HomeFragment())
-//                        .commitAllowingStateLoss()
-//                    return@setOnItemSelectedListener true
-//                }
-
                 R.id.searchFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, SearchFragment())
-                        .commitAllowingStateLoss()
+                    argBundle.putSerializable("storeList",(argList))
+                    argBundle.putString("stadiumName",postStadium)
+                    argBundle.putString("userId",userId)
+                    argBundle.putString("userPassword",userPassword)
+
+                    val searchFragment = SearchFragment()
+                    searchFragment.arguments = argBundle
+
+                    val manager:FragmentManager=supportFragmentManager
+                    val transaction:FragmentTransaction=manager.beginTransaction()
+                    transaction.replace(R.id.main_frm,searchFragment).commit()
+
+
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.main_frm, SearchFragment())
+//                        .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
                 R.id.lockerFragment -> {
@@ -130,8 +119,40 @@ class MainActivity : AppCompatActivity() {
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
-            }
+        }
             false
         }
     }
+
+//    private fun initBottomNavigation() {
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.main_frm, HomeFragment())
+//            .commitAllowingStateLoss()
+//
+//        binding.mainBnv.setOnItemSelectedListener{ item ->
+//            when (item.itemId) {
+//
+//                R.id.homeFragment -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.main_frm, HomeFragment())
+//                        .commitAllowingStateLoss()
+//                    return@setOnItemSelectedListener true
+//                }
+//
+//                R.id.searchFragment -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.main_frm, SearchFragment())
+//                        .commitAllowingStateLoss()
+//                    return@setOnItemSelectedListener true
+//                }
+//                R.id.lockerFragment -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.main_frm, LockerFragment())
+//                        .commitAllowingStateLoss()
+//                    return@setOnItemSelectedListener true
+//                }
+//            }
+//            false
+//        }
+//    }
 }
