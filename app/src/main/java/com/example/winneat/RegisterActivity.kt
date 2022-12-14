@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.winneat.APIS.APISRegister
 import com.example.winneat.APIS.APISValidate
+import com.example.winneat.PostData.PostRegister
 import com.example.winneat.databinding.ActivityRegisterBinding
 import retrofit2.Call
 import retrofit2.Callback

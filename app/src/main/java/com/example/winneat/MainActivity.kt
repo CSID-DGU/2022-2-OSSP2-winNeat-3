@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.winneat.APIS.APISStore
+import com.example.winneat.PostData.PostStore
+import com.example.winneat.PostData.storeResult
 import com.example.winneat.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
