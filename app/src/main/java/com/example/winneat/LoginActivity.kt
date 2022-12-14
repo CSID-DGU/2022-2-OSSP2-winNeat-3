@@ -44,8 +44,7 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(thisActivity,StadiumActivity::class.java)
                     intent.putExtra("userId",userId)
                     intent.putExtra("userPassword",userPassword)
-
-                    startActivity(intent) // 메인 액티비티로 이동
+                    startActivity(intent) // 경기장 액티비티로 이동
                 }
                 override fun onFailure(call: Call<PostLogin>, t: Throwable) {
                     Log.d("log","${t.localizedMessage}")
