@@ -1,4 +1,4 @@
-package com.example.winneat
+package com.example.winneat.PostData
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
