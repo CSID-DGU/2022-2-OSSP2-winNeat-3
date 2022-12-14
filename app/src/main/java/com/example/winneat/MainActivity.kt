@@ -25,14 +25,16 @@ class MainActivity : AppCompatActivity() {
 
         var userId = ""
         var userPassword = ""
+        var stadiumName = ""
 
-        if(intent.hasExtra("userId")&&intent.hasExtra("userPassword")){
+        if(intent.hasExtra("userId")&&intent.hasExtra("userPassword")&&intent.hasExtra("stadiumName")){
             userId = intent.getStringExtra("userId").toString()
             userPassword = intent.getStringExtra("userPassword").toString()
-            Log.d("log", "메인에서 받아온 id : $userId, pw : $userPassword")
+            stadiumName = intent.getStringExtra("stadiumName").toString()
+            Log.d("log", "메인에서 받아온 id : $userId, pw : $userPassword,stadiumName =$stadiumName")
         }
 
-        val postStadium="광주기아챔피언스필드"
+        val postStadium= stadiumName
         val argBundle = Bundle()
         val searchBundle = Bundle()
         var argList = arrayListOf<PostStore>()
