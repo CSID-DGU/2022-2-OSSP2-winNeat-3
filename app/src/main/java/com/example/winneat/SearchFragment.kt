@@ -84,6 +84,7 @@ class SearchFragment : Fragment() {
 
                 storeLayout.setOnClickListener {
                     Log.d("뭐 선택했는지",storelist?.get(position)?.storeName.toString())
+
                 }
 
             }
