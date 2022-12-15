@@ -18,5 +18,11 @@ data class PostRegister(
     var status: String? =null,
     @Expose
     @SerializedName("phoneNum")
-    var phoneNum: String? =null
+    var phoneNum: String? =null,
+    @Expose
+    @SerializedName("seatNum")
+    var seatNum: String? =null,
+    @Expose
+    @SerializedName("stadium")
+    var stadium: String? =null,
 )
