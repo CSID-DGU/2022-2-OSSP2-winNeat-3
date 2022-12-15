@@ -13,6 +13,9 @@ class MyApp {
         const val Menu_url : String = "http://winandeat.dothome.co.kr/menu.php"
         const val CStore_url : String = "http://winandeat.dothome.co.kr/choose_store.php"
         const val SetSeat_url : String = "http://winandeat.dothome.co.kr/set_seat.php"
+        const val Order_url : String = "http://winandeat.dothome.co.kr/order.php"
+        const val Order_Detail_url : String = "http://winandeat.dothome.co.kr/order_detail.php"
+
 
     }
 }
