@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.winneat.APIS.APISLogin
+import com.example.winneat.APIS.APISSetStadium
 import com.example.winneat.APIS.APISStadium
 import com.example.winneat.PostData.PostLogin
 import com.example.winneat.PostData.PostStadium
@@ -27,7 +28,8 @@ import retrofit2.Response
 
 class StadiumSelectActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStadiumSelectBinding
-    private val api by lazy { APISStadium.create() }
+    private val api_1 by lazy { APISStadium.create() }
+    private val api_2 by lazy { APISSetStadium.create() }
     lateinit var recyclerView: RecyclerView
     var list: ArrayList<PostStadium>? = null
     val thisActivity = this
@@ -48,7 +50,7 @@ class StadiumSelectActivity : AppCompatActivity() {
             Log.d("log", "메인에서 받아온 id : $userId, pw : $userPassword")
         }
 
-        api.postStadiumInfo(stadiumexam).enqueue(object :Callback<stadiumResult>{
+        api_1.postStadiumInfo(stadiumexam).enqueue(object :Callback<stadiumResult>{
             override fun onResponse(call: Call<stadiumResult>, response: Response<stadiumResult>) {
                 // PostLogin 클래스 형식으로 php에 데이터 Post, php가 응답한 데이터 또한 PostLogin 클레스 형식으로 받아옴
 //                    Log.d("log",response.toString())
@@ -103,14 +105,34 @@ class StadiumSelectActivity : AppCompatActivity() {
                 //stadiumTextView.text = list?.get(position)?.stadiumName
                 //Log.d("list : ", "성공 : ${list}") // php가 보내온 아이디, 비밀번호가 로그캣에 띄워짐
                 stadiumTextView.text = list?.get(position)?.stadiumName
+
                 stadiumLayout.setOnClickListener {
                     Log.d("뭐 선택했는지",list?.get(position)?.stadiumName.toString())
-                    val intent = Intent(thisActivity,MainActivity::class.java)
-                    intent.putExtra("userId",userId)
-                    intent.putExtra("userPassword",userPassword)
-                    intent.putExtra("stadiumName",list?.get(position)?.stadiumName.toString())
+                    val stadiumName = list?.get(position)?.stadiumName.toString()
 
-                    startActivity(intent) // 경기장 액티비티로 이동
+                    api_2.postStadiumInfo(stadiumName,userId).enqueue(object :Callback<PostStadium>{
+                        override fun onResponse(call: Call<PostStadium>, response: Response<PostStadium>) {
+                            // PostLogin 클래스 형식으로 php에 데이터 Post, php가 응답한 데이터 또한 PostLogin 클레스 형식으로 받아옴
+//                    Log.d("log",response.toString())
+//                    Log.d("log", response.body().toString())
+                            Log.d("log", "성공 : ${response.body()}") // php가 보내온 아이디, 비밀번호가 로그캣에 띄워짐
+                            val body = response.body()
+
+                            val intent = Intent(thisActivity,MainActivity::class.java)
+                            intent.putExtra("userId",userId)
+                            intent.putExtra("userPassword",userPassword)
+                            intent.putExtra("stadiumName",list?.get(position)?.stadiumName.toString())
+
+                            startActivity(intent) // 메인 액티비티로 이동
+                        }
+                        override fun onFailure(call: Call<PostStadium>, t: Throwable) {
+                            Log.d("log","${t.localizedMessage}")
+
+                        }
+                    })
+
+
+
                 }
 
             }
