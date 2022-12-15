@@ -37,6 +37,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:text="메뉴 이름"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/iv_food"
             app:layout_constraintTop_toTopOf="parent"
             app:textAllCaps="false" />
@@ -48,6 +50,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:text="가격"
+            android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/iv_food"
             app:layout_constraintTop_toBottomOf="@+id/tv_Mname"
             app:textAllCaps="false" />
