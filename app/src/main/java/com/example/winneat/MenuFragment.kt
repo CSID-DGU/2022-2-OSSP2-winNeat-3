@@ -36,6 +36,7 @@ class MenuFragment : Fragment() {
     var stadiumName=""
     var storeName=""
     var menulist: ArrayList<PostMenu>? = null
+    var count=0
 
     val orderData : ArrayList<Order> = arrayListOf<Order>()
 
@@ -105,15 +106,20 @@ class MenuFragment : Fragment() {
                 nameTextView.text = menulist?.get(position)?.menuName
                 costTextView.text = menulist?.get(position)?.menuPrice.toString()
 
+                if(count==0){
+                    menuLayout.setOnClickListener {
+                        val name = menulist?.get(position)?.menuName.toString()
+                        val price= menulist?.get(position)?.menuPrice.toString()
 
-                menuLayout.setOnClickListener {
-                    val name = menulist?.get(position)?.menuName.toString()
-                    val price= menulist?.get(position)?.menuPrice.toString()
+                        val data = Order(name,price)
+                        orderData.add(data)
 
-                    val data = Order(name,price)
-                    orderData.add(data)
-
-                    menuLayout.setBackgroundColor(Color.LTGRAY)
+                        menuLayout.setBackgroundColor(Color.LTGRAY)
+                        count += 1
+                    }
+                }else{
+                    val ac = requireActivity().getApplicationContext()
+                    ToastObj.createToast(ac, "더 이상 선택할 수 없습니다.")?.show() // 토스트 메시지 띄움
                 }
 
                 val bundle = bundleOf("storeName" to storeName,
