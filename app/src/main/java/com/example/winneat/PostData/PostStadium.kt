@@ -13,4 +13,7 @@ data class PostStadium(
     @Expose
     @SerializedName("stadiumName")
     var stadiumName: String?,
+    @Expose
+    @SerializedName("status")
+    var status: String?,
 )
