@@ -77,14 +77,16 @@ class SearchFragment : Fragment() {
             holder.apply {
                 nameTextView.text = storelist?.get(position)?.storeName
 
-                if(storelist?.get(position)?.storeCategory.equals("떡볶이")){
-                    Glide.with(itemView).load("https://cdn.pixabay.com/photo/2016/08/20/13/06/toppokki-1607479_960_720.jpg").override(400,200).centerCrop().into(storePic)
+                if(storelist?.get(position)?.storeCategory.equals("분식")){
+                    Glide.with(itemView).load("https://img.freepik.com/free-photo/cheesy-tokbokki-korean-traditional-food-on-black-board-background-lunch-dish_1150-42995.jpg?w=996&t=st=1671086046~exp=1671086646~hmac=e5010d5ea59272a4e9ea314f833a4493f2295cc997eaf946f8d695d72f5fc89a").override(400,200).centerCrop().into(storePic)
                 }else if (storelist?.get(position)?.storeCategory.equals("호프")){
                     Glide.with(itemView).load("https://cdn.pixabay.com/photo/2017/02/25/15/23/barbecue-2098020_960_720.jpg").override(400,200).centerCrop().into(storePic)
                 }else if (storelist?.get(position)?.storeCategory.equals("치킨")){
                     Glide.with(itemView).load("http://www.bhc.co.kr/upload/bhc/menu/ckc20150130_470_v.jpg").override(400,200).centerCrop().into(storePic)
                 }else if (storelist?.get(position)?.storeCategory.equals("햄버거")){
                     Glide.with(itemView).load("https://cdn.pixabay.com/photo/2014/10/19/20/59/hamburger-494706_960_720.jpg").override(400,200).centerCrop().into(storePic)
+                }else if (storelist?.get(position)?.storeCategory.equals("디저트")){
+                    Glide.with(itemView).load("https://img.freepik.com/free-photo/homemade-refreshing-summer-lemonade-drink-with-lemon-slices-mint-and-ice-cubes_176532-10726.jpg?w=996&t=st=1671086270~exp=1671086870~hmac=b6db4b28936d728fa5bedebc1dbcdcf12ba759d2ac5fa9b5e00706a105d2b64e").override(400,200).centerCrop().into(storePic)
                 }
 
                 storeLayout.setOnClickListener {
