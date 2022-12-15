@@ -15,8 +15,10 @@
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/drawable/soid_button.xml" value="0.18611111111111112" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/drawable/solid_button.xml" value="0.18611111111111112" />
+        <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/drawable/solid_button_enabled.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/activity_order.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/activity_register.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/activity_stadium.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/activity_stadium_select.xml" value="0.23802083333333332" />
@@ -29,7 +31,7 @@
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/fragment_search.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/list_item_menu.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/list_item_review.xml" value="0.18072916666666666" />
-        <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/order_item.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/order_item.xml" value="0.2" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/stadium_info.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/store_item.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/garden/AndroidStudioProjects/winNeat/app/src/main/res/layout/toast_design.xml" value="0.72" />
