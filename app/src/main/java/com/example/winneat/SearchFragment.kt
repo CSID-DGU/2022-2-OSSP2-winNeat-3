@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -95,6 +97,11 @@ class SearchFragment : Fragment() {
                         this.putExtra("storeName",storeName)
                         this.putExtra("stadiumName", stadiumName)
                     }
+
+                    val bundle = bundleOf("userId" to userId, "userPassword" to userPassword, "storeName" to storeName, "stadiumName" to stadiumName)
+                    setFragmentResult("search",bundle)
+                    Log.d("search bundle", bundle.toString())
+
                     startActivity(intent)
                 }
             }
