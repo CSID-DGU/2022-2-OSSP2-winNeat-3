@@ -15,6 +15,7 @@ class MyApp {
         const val SetSeat_url : String = "http://winandeat.dothome.co.kr/set_seat.php"
         const val Order_url : String = "http://winandeat.dothome.co.kr/order.php"
         const val Order_Detail_url : String = "http://winandeat.dothome.co.kr/order_detail.php"
+        const val Set_Stadium_url : String = "http://winandeat.dothome.co.kr/set_stadium.php"
 
 
     }
