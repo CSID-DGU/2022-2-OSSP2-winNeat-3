@@ -28,5 +28,8 @@ data class PostOrder(
     var stadiumName: String?,
     @Expose
     @SerializedName("status")
-    var status: String?
+    var status: String?,
+    @Expose
+    @SerializedName("seatNum")
+    var seatNum: String?
 )
