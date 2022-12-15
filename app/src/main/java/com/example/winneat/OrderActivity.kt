@@ -39,6 +39,7 @@ class OrderActivity : AppCompatActivity() {
     val api_3 by lazy { APISOrderDetail.create() }
     lateinit var recyclerView: RecyclerView
 
+    var seatNum=""
     var userId = ""
     var userPassword = ""
     var stadiumName=""
@@ -69,7 +70,7 @@ class OrderActivity : AppCompatActivity() {
 
 
         binding.btnSeat.setOnClickListener {
-            val seatNum = binding.seatNum.text.toString()
+            seatNum = binding.seatNum.text.toString()
             api_1.postSeat(userId,seatNum).enqueue(object : Callback<PostRegister> {
                 override fun onResponse(call: Call<PostRegister>, response: Response<PostRegister>) {
                     binding.seatNum.setText("")
@@ -95,13 +96,15 @@ class OrderActivity : AppCompatActivity() {
             val menuQuantity = 1
             val menuName = orderlist.get(0).menuName
 
-            api_2.postOrder(userId,orderNum,orderStatus,stadiumName).enqueue(object : Callback<PostOrder> {
+            api_2.postOrder(userId,orderNum,orderStatus,stadiumName,seatNum,orderDetailNum,menuName,menuQuantity).enqueue(object : Callback<PostOrder> {
                 override fun onResponse(call: Call<PostOrder>, response: Response<PostOrder>) {
                     val body = response.body()
                     val status = body?.orderStatus.toString()
 
                     Log.d("log1", body.toString())
 
+                    binding.btnOrder.isEnabled = false
+                    binding.btnOrder.setBackgroundResource(R.drawable.solid_button_enabled)
                 }
                 override fun onFailure(call: Call<PostOrder>, t: Throwable) {
                     Log.d("log1","${t.localizedMessage}")
@@ -109,22 +112,22 @@ class OrderActivity : AppCompatActivity() {
                 }
             })
 
-            api_3.postOrderDetail(orderNum,menuName,orderDetailNum,menuQuantity).enqueue(object : Callback<PostOrder> {
-                override fun onResponse(call: Call<PostOrder>, response: Response<PostOrder>) {
-                    val body = response.body()
-                    val status = body?.orderStatus.toString()
-
-                    Log.d("log2", body.toString())
-                    binding.btnOrder.isEnabled = false
-                    binding.btnOrder.setBackgroundResource(R.drawable.solid_button_enabled)
-
-                }
-                override fun onFailure(call: Call<PostOrder>, t: Throwable) {
-                    Log.d("log2","${t.localizedMessage}")
-                    ToastObj.createToast(applicationContext, "주문 오류")?.show() // 토스트 메시지 띄움
-
-                }
-            })
+//            api_3.postOrderDetail(orderNum,menuName,orderDetailNum,menuQuantity).enqueue(object : Callback<PostOrder> {
+//                override fun onResponse(call: Call<PostOrder>, response: Response<PostOrder>) {
+//                    val body = response.body()
+//                    val status = body?.orderStatus.toString()
+//
+//                    Log.d("log2", body.toString())
+//                    binding.btnOrder.isEnabled = false
+//                    binding.btnOrder.setBackgroundResource(R.drawable.solid_button_enabled)
+//
+//                }
+//                override fun onFailure(call: Call<PostOrder>, t: Throwable) {
+//                    Log.d("log2","${t.localizedMessage}")
+//                    ToastObj.createToast(applicationContext, "주문 오류")?.show() // 토스트 메시지 띄움
+//
+//                }
+//            })
 
 
             // 결제창
