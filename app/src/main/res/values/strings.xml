@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">winNeat</string>
+    <style name="LaunchTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
 </resources>
