@@ -30,7 +30,12 @@ interface APISOrder {
         @Field("orderNum") orderNum: String,
         @Field("orderStatus") orderStatus: String,
         @Field("stadiumName") stadiumName: String,
-    ): Call<PostOrder>
+        @Field("seatNum") seatNum: String,
+        @Field("orderDetailNum") orderDetailNum: String,
+        @Field("menuName") menuName: String,
+        @Field("menuQuantity") menuQuantity: Int,
+
+        ): Call<PostOrder>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         //서버 IP만 입력해주세요~
