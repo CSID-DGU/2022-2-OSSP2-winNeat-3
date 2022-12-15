@@ -8,10 +8,6 @@
     android:background="#11111111"
     tools:context=".R_Info_Fragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/Rinfo"
@@ -25,42 +21,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="가게 정보"
+                android:textStyle="bold"
+                android:textSize="23dp"
+                android:textColor="#000"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_Rinfo_content"
+                android:id="@+id/storeLoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="위치"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/tv_Rinfo" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/Binfo"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="16dp"
-            android:background="#FFFFFFFF"
-            android:orientation="vertical">
-
             <TextView
-                android:id="@+id/tv_Binfo"
+                android:id="@+id/storeStadium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="영업 정보"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="경기장" />
 
             <TextView
-                android:id="@+id/tv_Binfo_content"
+                android:id="@+id/storeCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="TextView"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Binfo" />
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="카테고리" />
 
         </LinearLayout>
-    </LinearLayout>
+
+
+
 
 </ScrollView>
