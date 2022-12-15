@@ -57,4 +57,7 @@ dependencies {
     implementation "androidx.fragment:fragment:$fragment_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
+    implementation 'io.github.bootpay:android:4.2.0' //최신 버전 추천
+   // implementation 'io.github.bootpay:android-bio:+' //생체인증 결제 사용시 추가
+
 }
