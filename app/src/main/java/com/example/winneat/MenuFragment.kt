@@ -1,5 +1,7 @@
 package com.example.winneat
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,6 +21,9 @@ import com.example.winneat.APIS.APISMenu
 import com.example.winneat.APIS.APISStore
 import com.example.winneat.PostData.PostMenu
 import com.example.winneat.databinding.FragmentMenuBinding
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
@@ -31,6 +36,8 @@ class MenuFragment : Fragment() {
     var stadiumName=""
     var storeName=""
     var menulist: ArrayList<PostMenu>? = null
+
+    val orderData : ArrayList<Order> = arrayListOf<Order>()
 
     override fun onCreateView( inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +52,22 @@ class MenuFragment : Fragment() {
 //            stadiumName = bundle.getString("stadiumName").toString()
 //            storeName = bundle.getString("ustoreName").toString()
 //        }
+
+        binding.orderButton.setOnClickListener {
+            val intent = Intent(getActivity(), OrderActivity::class.java)
+            intent.putExtra("userId",userId)
+            intent.putExtra("userPassword",userPassword)
+            intent.putExtra("stadiumName",stadiumName)
+            intent.putExtra("storeName",storeName)
+            intent.putExtra("orderList", orderData)
+            for(i in 0 until orderData.size){
+                Log.d("뭐 선택했는지",orderData[i].menuName)
+                Log.d("뭐 선택했는지",orderData[i].menuPrice)
+            }
+            startActivity(intent) // 주문 화면으로 이동
+
+        }
+
 
         val qlist = arguments?.getSerializable("menuList")
         userId = arguments?.getString("userId").toString()
@@ -84,7 +107,13 @@ class MenuFragment : Fragment() {
 
 
                 menuLayout.setOnClickListener {
-                    Log.d("뭐 선택했는지",menulist?.get(position)?.menuName.toString())
+                    val name = menulist?.get(position)?.menuName.toString()
+                    val price= menulist?.get(position)?.menuPrice.toString()
+
+                    val data = Order(name,price)
+                    orderData.add(data)
+
+                    menuLayout.setBackgroundColor(Color.LTGRAY)
                 }
 
                 val bundle = bundleOf("storeName" to storeName,
@@ -106,6 +135,5 @@ class MenuFragment : Fragment() {
             val menuLayout : ConstraintLayout = view.findViewById(R.id.menu_layout)
         }
     }
-
 
 }
