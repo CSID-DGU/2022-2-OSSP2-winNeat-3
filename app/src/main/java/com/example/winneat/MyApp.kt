@@ -12,6 +12,7 @@ class MyApp {
         const val Stadium_url : String = "http://winandeat.dothome.co.kr/stadiums.php"
         const val Menu_url : String = "http://winandeat.dothome.co.kr/menu.php"
         const val CStore_url : String = "http://winandeat.dothome.co.kr/choose_store.php"
+        const val SetSeat_url : String = "http://winandeat.dothome.co.kr/set_seat.php"
 
     }
 }
