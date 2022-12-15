@@ -10,5 +10,8 @@ class MyApp {
         const val Validate_url: String = "http://winandeat.dothome.co.kr/user_validate.php"
         const val Store_url: String = "http://winandeat.dothome.co.kr/store.php"
         const val Stadium_url : String = "http://winandeat.dothome.co.kr/stadiums.php"
+        const val Menu_url : String = "http://winandeat.dothome.co.kr/menu.php"
+        const val CStore_url : String = "http://winandeat.dothome.co.kr/choose_store.php"
+
     }
 }
