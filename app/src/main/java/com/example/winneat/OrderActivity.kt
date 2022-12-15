@@ -20,6 +20,17 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.Field
 import java.time.LocalDateTime
+import kr.co.bootpay.android.Bootpay
+import kr.co.bootpay.android.BootpayAnalytics
+import kr.co.bootpay.android.events.BootpayEventListener
+import kr.co.bootpay.android.models.Payload
+import kr.co.bootpay.android.models.statistics.BootStatItem
+import kr.co.bootpay.android.models.BootItem
+import kr.co.bootpay.android.models.BootExtra
+import kr.co.bootpay.android.models.BootUser
+
+
+
 
 class OrderActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOrderBinding
@@ -36,13 +47,15 @@ class OrderActivity : AppCompatActivity() {
     var orderData : ArrayList<Order> = arrayListOf<Order>()
     lateinit var orderlist : ArrayList<Order>
     val thisActivity = this
+
+    private val AppId = "638789f2d01c7e001d7bd5b3" //production
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_order)
         binding = ActivityOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         if(intent.hasExtra("userId")&&intent.hasExtra("userPassword")&&intent.hasExtra("stadiumName")&&intent.hasExtra("storeName")&&intent.hasExtra("orderList")){
             userId = intent.getStringExtra("userId").toString()
@@ -113,14 +126,84 @@ class OrderActivity : AppCompatActivity() {
                 }
             })
 
-            val intent = Intent(thisActivity,MainActivity::class.java)
-            intent.putExtra("userId",userId)
-            intent.putExtra("userPassword",userPassword)
-            intent.putExtra("stadiumName",stadiumName)
-            startActivity(intent) // 메인 액티비티로 이동
+
+            // 결제창
+            goRequest()
+
+//            val intent = Intent(thisActivity,MainActivity::class.java)
+//            intent.putExtra("userId",userId)
+//            intent.putExtra("userPassword",userPassword)
+//            intent.putExtra("stadiumName",stadiumName)
+//            startActivity(intent) // 메인 액티비티로 이동
 
         }
 
     }
+
+    private fun goRequest() {
+        val user = BootUser().setPhone("010-1234-5678") // 구매자 정보
+        val extra = BootExtra()
+            .setCardQuota("0,2,3") // 일시불, 2개월, 3개월 할부 허용, 할부는 최대 12개월까지 사용됨 (5만원 이상 구매시 할부허용 범위)
+
+        val price = orderlist.get(0).menuPrice.toDouble()
+
+        val pg = "나이스페이"
+        val method = "카드"
+
+        val items: MutableList<BootItem> = ArrayList()
+        val item1 = BootItem().setName("마우's 스").setId("ITEM_CODE_MOUSE").setQty(1).setPrice(orderlist.get(0).menuPrice.toDouble())
+      //  val item2 = BootItem().setName("키보드").setId("ITEM_KEYBOARD_MOUSE").setQty(1).setPrice(8000.0)
+        items.add(item1)
+      //  items.add(item2)
+
+        val payload = Payload()
+        payload.setApplicationId(AppId)
+            .setOrderName(orderlist.get(0).menuName.toString()+" 결제")
+            .setPg(pg)
+            .setOrderId("1234")
+            .setMethod(method)
+            .setPrice(price)
+            .setUser(user)
+            .setExtra(extra).items = items
+
+        val map: MutableMap<String, Any> = HashMap()
+        map["1"] = "abcdef"
+        map["2"] = "abcdef55"
+        map["3"] = 1234
+        payload.metadata = map
+
+        Bootpay.init(supportFragmentManager, applicationContext)
+            .setPayload(payload)
+            .setEventListener(object : BootpayEventListener {
+                override fun onCancel(data: String) {
+                    Log.d("bootpay", "cancel: $data")
+                }
+
+                override fun onError(data: String) {
+                    Log.d("bootpay", "error: $data")
+                }
+
+                override fun onClose(data: String) {
+                    Log.d("bootpay", "close: $data")
+                    Bootpay.removePaymentWindow()
+                }
+
+                override fun onIssued(data: String) {
+                    Log.d("bootpay", "issued: $data")
+                }
+
+                override fun onConfirm(data: String): Boolean {
+                    Log.d("bootpay", "confirm: $data")
+                    //Bootpay.transactionConfirm(data); //재고가 있어서 결제를 진행하려 할때 true (방법 1)
+                    return true //재고가 있어서 결제를 진행하려 할때 true (방법 2)
+                    //return false; //결제를 진행하지 않을때 false
+                }
+
+                override fun onDone(data: String) {
+                    Log.d("done", data)
+                }
+            }).requestPayment()
+    }
+
 
 }
